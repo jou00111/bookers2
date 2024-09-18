@@ -1,66 +1,111 @@
 <!DOCTYPE html>
 <html>
+
   <head>
+
     <title>Bookers2</title>
-    <meta name="viewport" content="width=device-width,initial-scale=1">
+
+    <meta name="viewport" content="width=device-width,initial-scale=1, maximum-scale=1">
+
     <%= csrf_meta_tags %>
+
     <%= csp_meta_tag %>
 
     <script src="https://use.fontawesome.com/releases/v6.6.0/js/all.js"  crossorigin="anonymous"></script>
 
     <%= stylesheet_pack_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+
     <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
 
   <body>
+
     <header>
+
       <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
-        <div class -"collapse navbar-collapse" id="nabvarNabDropdown">
+
           <div class = "container">
-            <a class="navbar-brand p-3" href="/">Bookers</a>
-            <button class = "navbar-toggler-icon" type = "button" data-toggle="collapse" data-target = "#navbarNabDropdown"
-                            area-controls = "navbarNabDropdown" area-expanded = "false" area-label = "Toggle navigation">
+
+            <a class="navbar-brand" href="/">Bookers</a>
+
+            <button class = "navbar-toggler" type = "button" data-toggle="collapse" data-target = "#navbarNavDropdown"
+                            area-controls = "navbarNavDropdown" area-expanded = "false" area-label = "Toggle navigation">
               <span class = "navbar-toggler-icon"></span>
+
             </button>
-            <div class="nav-item">
+
+             <div class="collapse navbar-collapse" id="navbarNavDropdown">
+
               <ul class="navbar-nav ml-auto">
+
                <% if user_signed_in? %>
+
                  <li class="nav-item">
-                   <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
+
+                   <%= link_to "Home", root_path, class: 'nav-link text-light' %>
+
                  </li>
 
                  <li class="nav-item">
-                   <%= link_to "Users", users_path, class: 'nav-link text-dark' %>
+
+                   <%= link_to "Users", user_path(current_user.id), class: 'nav-link text-light' %>
+
                  </li>
 
                  <li class="nav-item">
-                  <%= link_to "Books", books_path, class: 'nav-link text-dark' %>
+
+                  <%= link_to "Books", books_path, class: 'nav-link text-light' %>
+
                  </li>
 
                  <li class="nav-item">
-                   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+
+                   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-light' %>
+
                  </li>
 
-                <% else %>
-
-
-
+               <% else %>
 
                  <li class="nav-item">
-                  <%= link_to "Sign up", new_user_registration_path,cd class: 'nav-link text-dark' %>
+
+                  <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
+
                  </li>
 
                  <li class="nav-item">
-                   <%= link_to "Log in", new_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+
+                   <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark' %>
+
                  </li>
 
-                  <% end %>
-                  </ul>
+                <% end %>
+
+              </ul>
+
             </div>
-                </div>
-        </div>
+
+         </div>
+
       </nav>
+
     </header>
+
+    <main>
+
     <%= yield %>
+
+    </main>
+
+    <footer>
+      <div class="container mt-5">
+          <div class="row">
+              <div class="mx-auto">
+                <p>CopyRight Infratop.inc</p>
+              </div>
+          </div>
+      </div>
+    </footer>
+
   </body>
 </html>
