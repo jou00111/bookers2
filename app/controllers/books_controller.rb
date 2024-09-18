@@ -1,5 +1,6 @@
 class BooksController < ApplicationController
   def new
+    @new = Book.new
   end
 
   def edit

@@ -14,15 +14,53 @@
 
   <body>
     <header>
-    <% if user_signed_in? %>
-     <li>
-       <% link_to "Home", user_path %>
-     </li>
-    else
-     <%= link_to "Users"  >
-     
-    end
-  </header>  
+      <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
+        <div class -"collapse navbar-collapse" id="nabvarNabDropdown">
+          <div class = "container">
+            <a class="navbar-brand p-3" href="/">Bookers</a>
+            <button class = "navbar-toggler-icon" type = "button" data-toggle="collapse" data-target = "#navbarNabDropdown"
+                            area-controls = "navbarNabDropdown" area-expanded = "false" area-label = "Toggle navigation">
+              <span class = "navbar-toggler-icon"></span>
+            </button>
+            <div class="nav-item">
+              <ul class="navbar-nav ml-auto">
+               <% if user_signed_in? %>
+                 <li class="nav-item">
+                   <%= link_to "Home", root_path, class: 'nav-link text-dark' %>
+                 </li>
+
+                 <li class="nav-item">
+                   <%= link_to "Users", users_path, class: 'nav-link text-dark' %>
+                 </li>
+
+                 <li class="nav-item">
+                  <%= link_to "Books", books_path, class: 'nav-link text-dark' %>
+                 </li>
+
+                 <li class="nav-item">
+                   <%= link_to "Log out", destroy_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+                 </li>
+
+                <% else %>
+
+
+
+
+                 <li class="nav-item">
+                  <%= link_to "Sign up", new_user_registration_path,cd class: 'nav-link text-dark' %>
+                 </li>
+
+                 <li class="nav-item">
+                   <%= link_to "Log in", new_user_session_path, method: :delete, class: 'nav-link text-dark' %>
+                 </li>
+
+                  <% end %>
+                  </ul>
+            </div>
+                </div>
+        </div>
+      </nav>
+    </header>
     <%= yield %>
   </body>
 </html>
