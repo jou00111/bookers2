@@ -1,8 +1,9 @@
 <div class="container px-5 px-sm-0">
+  <%= render "layouts/error", object: @book %>
   <div class="row">
     <%= render "layouts/form", book: @book, user: @user %>
-    <div class="col-md-8 offset-md-1">
-      <h2>Users</h2>
+   <div class="col-md-8 offset-md-1">
+      <h2>Book detail</h2>
       <table class="table">
         <thead>
           <tr>
@@ -11,27 +12,38 @@
             <th>Opinion</th>
           </tr>
         </thead>
-        <% @books.each do |book| %>
+
           <tbody>
             <tr>
               <td>
                 <%= link_to user_path(@user.id) do %>
-                  <%= image_tag book.user.get_profile_image(100,100) %>
+                  <%= image_tag @user.get_profile_image(100,100) %><br>
+                  <%= @user.name %>
                 <% end %>
               </td>
 
               <td>
-                <%= link_to book_path(book.id) do %>
-                  <%= book.title %>
+                <%= link_to book_path(@book.id) do %>
+                  <%= @book.title %>
                 <% end %>
               </td>
               <td>
-                <%= book.body %>
+                <%= @book.body %>
               </td>
+
+              <td>
+                <% if @book.user == current_user %>
+                  <%= link_to 'Edit', edit_book_path(@book.id), class: 'btn btn-success' %>
+                <% end %>
+              <td>
+                <% if @book.user == current_user %>
+                  <%= link_to "Destroy", book_path(@book.id), method: :delete, class: "btn btn-danger" %>
+                <% end %>
+              </td>
+
             </tr>
           </tbody>
-        <% end %>
       </table>
-    </div>
+   </div>
   </div>
 </div>

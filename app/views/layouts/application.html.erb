@@ -21,6 +21,7 @@
 
   <body>
 
+
     <header>
 
       <nav class = "navbar navbar-expand-lg navbar-dark bg-dark">
@@ -43,14 +44,14 @@
 
                  <li class="nav-item">
 
-                   <%= link_to  root_path, class: 'nav-link text-light' do %>
+                   <%= link_to  user_path(current_user.id), class: 'nav-link text-light' do %>
                      <i class="fa-solid fa-house"></i> Home
                    <% end %>
                  </li>
 
                  <li class="nav-item">
 
-                   <%= link_to  user_path(current_user.id), class: 'nav-link text-light' do %>
+                   <%= link_to  '/users', class: 'nav-link text-light' do %>
                      <i class="fa-solid fa-users"></i> Users
                    <% end %>
                  </li>
@@ -73,14 +74,30 @@
 
                  <li class="nav-item">
 
-                  <%= link_to "Sign up", new_user_registration_path, class: 'nav-link text-dark' %>
-
+                   <%= link_to root_path, class: 'nav-link text-light' do %>
+                     <i class="fa-solid fa-house"></i> Home
+                   <% end %>
                  </li>
 
                  <li class="nav-item">
 
-                   <%= link_to "Log in", new_user_session_path, class: 'nav-link text-dark' %>
+                   <%= link_to  '/home/about', class: 'nav-link text-light' do %>
+                     <i class="fa-solid fa-link"></i> About
+                   <% end %>
+                 </li>
 
+                 <li class="nav-item">
+
+                  <%= link_to  new_user_registration_path, class: 'nav-link text-light' do %>
+                  <i class="fa-solid fa-user-plus"></i> Sign up
+                   <% end %>
+                 </li>
+
+                 <li class="nav-item">
+
+                   <%= link_to new_user_session_path, class: 'nav-link text-light' do %>
+                    <i class="fa-solid fa-right-to-bracket"></i> Log in
+                    <% end %>
                  </li>
 
                 <% end %>
@@ -94,9 +111,8 @@
       </nav>
 
     </header>
-
     <main>
-
+     <p id="notice"><%= notice %></p>
     <%= yield %>
 
     </main>

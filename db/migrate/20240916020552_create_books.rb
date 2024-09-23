@@ -6,7 +6,7 @@ class CreateBooks < ActiveRecord::Migration[6.1]
 
       t.string :title
 
-      t.string :opinion
+      t.string :body
 
       t.timestamps
     end
